@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QwitterController extends AbstractController
 {
     /**
-     * @Route("/qwitter", name= "qwitter")
+     * @Route("/qwitter", name= "app_qwitter_index")
      */
     public function index(): Response
     {
