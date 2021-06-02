@@ -14,8 +14,6 @@ class PostType extends AbstractType
         $builder
             ->add('content')
             ->add('media')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('likes')
         ;
     }
