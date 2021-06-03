@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ post.id }}</td>
                 <td>{{ post.content }}</td>
-                <td>{{ post.media }}</td>
+                <td><img src="{{asset('images/media/' ~ post.media) }}" alt="{{post.media}}"></td>
                 <td>{{ post.author}}</td>
                 <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
