@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ error }} - {{ message }}{% endblock %}
+
+
+{% block body %}
+    <div class="jumbotron-fluid">
+        <div class="contenair">
+            <h2>
+                Tu te crois ou? c'est pas ton post fréro
+            </h2>
+            <h3>
+                {{error}}-{{message}}
+            </h3>            
+        </div>
+    </div>
+    <a href="{{ path('post_index') }}">
+        <button class="btn btn-secondary btn-lg" type="button">Back to posts</button>
+    </a>
+{% endblock %}

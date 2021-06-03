@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post index{% endblock %}
+{% block title %}Post list{% endblock %}
 
 {% block body %}
     <h1>Post index</h1>
@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Content</th>
                 <th>Media</th>
+                <th>Author</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
@@ -22,11 +23,14 @@
                 <td>{{ post.id }}</td>
                 <td>{{ post.content }}</td>
                 <td>{{ post.media }}</td>
+                <td>{{ post.author}}</td>
                 <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
+                    {% if app.user is same as(post.author) %}
                     <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -37,5 +41,7 @@
         </tbody>
     </table>
 
+    {% if app.user %}
     <a href="{{ path('post_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
