@@ -29,16 +29,35 @@
             </tr>
         </tbody>
     </table>
+    <div>likes: <span class="badge bg-primary">{{post.likes|length}}</span></div>
+    {% set break = false %}
+    <p> {% for like in post.likes %}
+            {% if not break %}
+                {% if post.likes|length == 1 %}
+                {{like}} liked this post.
 
-    <a href="{{ path('post_index') }}">back to list</a>
+                {% else %}             
+                {{like}} and {{post.likes|length - 1}} liked this post
+                {% set break = true %}
+                {% endif %}
+            {% endif %}
+        {% else %}
+            No one liked this post yet. Like Batard!
+        {% endfor %} liked this post</p>
 
-    {% if app.user is same as(post.author) %}
 
-    <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
+    {% if app.user in post.likes %}
 
-    {{ include('post/_delete_form.html.twig') }}
+    <a href="{{path("post_like", {'id':post.id})}}">
+        <button class="btn btn-danger"><i class="far fa-heart"></i></button>
+    </a>
+    {% else %}
+    
+    <a href="{{path("post_like", {'id':post.id})}}"><button class="btn btn-primary"><i class="far fa-heart"></i></button></a>
 
     {% endif %}
+    <a class="btn btn-secondary" href="{{ path('post_index') }}">back to list</a>
+    {{ include('post/_delete_form.html.twig') }}
     <section class="container comment-section col-6">
         <h2>Comment section <span class="badge bg-secondary">{{post.comments|length}}</span></h2>
         {% for comment in comments %}

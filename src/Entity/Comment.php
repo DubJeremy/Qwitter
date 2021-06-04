@@ -2,8 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentRepository;
+use App\Entity\Post;
+use App\Entity\User;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\PrePersist;
+use App\Repository\CommentRepository;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -75,13 +80,19 @@ class Comment
         return $this->createdAt;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
+
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
     }
 
     public function getAuthor(): ?User
