@@ -39,5 +39,15 @@
     {{ include('post/_delete_form.html.twig') }}
 
     {% endif %}
-
+    <section class="container comment-section col-6">
+        <h2>Comment section <span class="badge bg-secondary">{{post.comments|length}}</span></h2>
+        {% for comment in comments %}
+            <div class="comment-item">
+                <p>@{{comment.author}}</p>
+                <p>{{comment.content}}</p>
+                <p>{{comment.createdAt|date('d M Y à H:i')}}</p>
+            </div>
+        {% endfor %}
+        {{form(form)}}
+    </section>
 {% endblock %}

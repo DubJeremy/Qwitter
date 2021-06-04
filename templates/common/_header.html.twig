@@ -4,28 +4,29 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Qwitter</a>
+      <a class="navbar-brand fs-2 fw-bold" href="#">Qwitter</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{path('app_qwitter_index')}}">Home</a>
         </li>
-        {% if not app.user %}
         <li class="nav-item">
-          <a class="nav-link" href="{{path('app_login')}}">Login</a>
+          <a class="nav-link active" aria-current="page" href="{{path('post_index')}}">Posts</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_register')}}" tabindex="-1" aria-disabled="true">Sign up</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_logout')}}" tabindex="-1" aria-disabled="true">Logout</a>
-        </li>
-        {% endif %}
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
-      </form>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+          {% if not app.user %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('app_login')}}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('app_register')}}" tabindex="-1" aria-disabled="true">Sign up</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('app_logout')}}" tabindex="-1" aria-disabled="true">Logout</a>
+          </li>
+          {% endif %}
+      </ul>   
     </div>
   </div>
 </nav>

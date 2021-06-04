@@ -12,6 +12,7 @@
                 <th>Content</th>
                 <th>Media</th>
                 <th>Author</th>
+                <th>Comments</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
@@ -24,6 +25,7 @@
                 <td>{{ post.content }}</td>
                 <td><img src="{{asset('images/media/' ~ post.media) }}" alt="{{post.media}}"></td>
                 <td>{{ post.author}}</td>
+                <td><span class="container badge bg-secondary">{{post.comments|length}}</span></td>
                 <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
